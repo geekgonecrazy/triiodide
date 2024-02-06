@@ -1,5 +1,5 @@
 # Multi-stage build
-ARG FEDORA_MAJOR_VERSION=38
+ARG FEDORA_MAJOR_VERSION=39
 
 ## Build ublue-os-triiodide
 FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_MAJOR_VERSION}
@@ -17,7 +17,7 @@ COPY usr /usr
 COPY ublue-firstboot /usr/bin
 
 RUN rpm-ostree override remove firefox firefox-langpacks && \
-    rpm-ostree install distrobox lxpolkit dmenu i3 i3lock i3status alacritty scrot xclip podman-compose light just vte291-gtk4-devel vanilla-first-setup && \
+    rpm-ostree install distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel vanilla-first-setup && \
     sed -i 's/#AutomaticUpdatePolicy.*/AutomaticUpdatePolicy=stage/' /etc/rpm-ostreed.conf && \
     systemctl enable rpm-ostreed-automatic.timer && \
     systemctl enable flatpak-system-update.timer && \
