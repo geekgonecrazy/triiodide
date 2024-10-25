@@ -1,5 +1,5 @@
 # Multi-stage build
-ARG FEDORA_MAJOR_VERSION=39
+ARG FEDORA_MAJOR_VERSION=40
 
 ## Build ublue-os-triiodide
 FROM quay.io/fedora-ostree-desktops/silverblue:${FEDORA_MAJOR_VERSION}
