@@ -30,6 +30,7 @@ jobs:
       fail-fast: false
       matrix:
         major_version: [40, 41]
+        arch: [amd64, arm64]
         include:
           - major_version: 41
             is_latest: true
@@ -38,6 +39,18 @@ jobs:
       # Checkout push-to-registry action GitHub repository
       - name: Checkout Push to Registry action
         uses: actions/checkout@v3
+
+      - name: Map platform to arch tag
+        id: map-arch-tag
+        shell: bash
+        run: |
+          arch_source_tag="x86_64"
+
+          if [[ "${{ matrix.arch }}" == "arm64" ]]; then
+            arch_source_tag=aarch64
+          fi
+
+          echo "arch_source_tag=${arch_source_tag}" >> $GITHUB_OUTPUT
 
       - name: Generate tags
         id: generate-tags
@@ -52,6 +65,7 @@ jobs:
             # The following is run when the timer is triggered or a merge/push to main
             echo "date=$(date +%Y%m%d)" >> $GITHUB_OUTPUT
             alias_tags+=("${{ matrix.major_version }}")
+            alias_tags+=("${{ matrix.major_version }}-${{ matrix.arch }}")
             if [[ "${{ matrix.is_latest }}" == "true" ]]; then
               alias_tags+=("latest")
             fi
@@ -71,6 +85,9 @@ jobs:
           labels: |
             io.artifacthub.package.readme-url=https://raw.githubusercontent.com/geekgonecrazy/triiodide/main/README.md
             io.artifacthub.package.logo-url=https://avatars.githubusercontent.com/u/120078124?s=200&v=4
+
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v1
       
       # Build image using Buildah action
       - name: Build Image
@@ -84,8 +101,10 @@ jobs:
             ${{ steps.generate-tags.outputs.alias_tags }}
             ${{ steps.generate-tags.outputs.date }}
             ${{ steps.generate-tags.outputs.sha_short }}
+          archs: ${{ matrix.arch }}
           build-args: |
             FEDORA_MAJOR_VERSION=${{ matrix.major_version }}
+            ARCH=${{ steps.map-arch-tag.outputs.arch_source_tag }}
           labels: ${{ steps.meta.outputs.labels }}
           oci: false
 
