@@ -19,8 +19,7 @@ COPY ublue-firstboot /usr/bin
 RUN dnf install -y langpacks-en lightdm distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel && \
     systemctl enable flatpak-system-update.timer && \
     rm -rf \
-        /tmp/* \
-        /var/*
+        /tmp/* 
 
 # Set Target
 RUN systemctl set-default graphical.target
