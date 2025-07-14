@@ -23,3 +23,6 @@ RUN dnf install -y distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacri
     rm -rf \
         /tmp/* \
         /var/*
+
+# Set Target
+RUN systemctl set-default graphical.target
