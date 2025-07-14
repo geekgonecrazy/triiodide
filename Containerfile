@@ -1,5 +1,5 @@
 # Multi-stage build
-ARG FEDORA_MAJOR_VERSION=41
+ARG FEDORA_MAJOR_VERSION=42
 ARG ARCH=x86_64
 
 ## Build ublue-os-triiodide
