@@ -16,10 +16,8 @@ COPY usr /usr
 COPY ublue-firstboot /usr/bin
 
 # RUN rpm-ostree override remove firefox firefox-langpacks && \
-RUN dnf install -y langpacks-en gdm distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel && \
-    systemctl enable flatpak-system-update.timer && \
-    rm -rf \
-        /tmp/* 
+RUN dnf groupinstall -y "GNOME Desktop Environment" && \
+    dnf install -y langpacks-en distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel
 
 # Set Target
 RUN systemctl set-default graphical.target
