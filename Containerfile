@@ -16,7 +16,11 @@ COPY usr /usr
 COPY ublue-firstboot /usr/bin
 
 # RUN rpm-ostree override remove firefox firefox-langpacks && \
-RUN dnf install -y xdm langpacks-en distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel
+RUN dnf install -y lightdm langpacks-en distrobox lxpolkit dmenu i3 i3-session i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel
 
-# Set Target
+# Explicitly create folder and give permission for lightdm directories
+RUN mkdir -p /var/cache/lightdm /var/lib/lightdm-data && \
+    chown lightdm:lightdm /var/cache/lightdm /var/lib/lightdm-data
+
+# Set boot Target
 RUN systemctl set-default graphical.target
