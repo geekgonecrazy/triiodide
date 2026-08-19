@@ -1,19 +1,16 @@
 # Multi-stage build
 ARG FEDORA_MAJOR_VERSION=44
 
-## Build ublue-os-triiodide
+## Build triiodide
 FROM quay.io/fedora/fedora-bootc:${FEDORA_MAJOR_VERSION}
 
-# Add Vanilla First Setup
-#RUN wget https://copr.fedorainfracloud.org/coprs/ublue-os/vanilla-first-setup/repo/fedora-$(rpm -E %fedora)/ublue-os-vanilla-first-setup-fedora-$(rpm -E %fedora).repo -O /etc/yum.repos.d/_copr_ublue-os-vanilla-first-setup.repo
-
-# Add in some useful udev rules
+# Extra udev rules (controllers, YubiKeys, etc.)
 COPY --from=ghcr.io/ublue-os/config:latest /files/ublue-os-udev-rules /
 
 COPY etc /etc
 COPY usr /usr
 
-COPY ublue-firstboot /usr/bin
+COPY triiodide-firstboot /usr/bin
 
 # RUN rpm-ostree override remove firefox firefox-langpacks && \
 RUN dnf install -y lightdm git flatpak langpacks-en distrobox lxpolkit dmenu i3 i3lock i3status volumeicon alacritty scrot xclip podman-compose light just vte291-gtk4-devel

@@ -1,4 +1,4 @@
-# Welcome to Universal Blue
+# Welcome to triiodide
 
 Thanks for taking the time to look into helping out!
 All contributions are appreciated! 
@@ -36,7 +36,7 @@ to jorge.castro@gmail.com
 
 ## I Have a Question
 
-> If you want to ask a question, ask in the [discussion forum](https://github.com/orgs/ublue-os/discussions)
+> If you want to ask a question, open a [GitHub issue](https://github.com/geekgonecrazy/triiodide/issues)
 
 ## I Want To Contribute
 
@@ -57,7 +57,7 @@ A good bug report should describe the issue in detail. Generally speaking:
 - Make sure that you are using the latest version.
 - Remember that these are unofficial builds, it's usually prudent to investigate an issue before reporting it here or in Fedora!
 - Collect information about the bug:
-  - `rpm-ostree status -v` usually helps
+  - `bootc status` or `rpm-ostree status -v` usually helps
 - Image and Version 
 - Possibly your input and the output
 - Can you reliably reproduce the issue? And can you also reproduce it with older versions?

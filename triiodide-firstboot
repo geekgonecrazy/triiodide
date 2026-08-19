@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if test -e "$HOME"/.config/ublue/firstboot-done; then
+if test -e "$HOME"/.config/triiodide/firstboot-done || test -e "$HOME"/.config/ublue/firstboot-done; then
     echo "Already ran"
     exit 0
 fi
@@ -138,13 +138,13 @@ echo "100"
 
 
 echo "# Reticulating Final Splines"
-mkdir -p "$HOME"/.config/ublue/
-touch "$HOME"/.config/ublue/firstboot-done
+mkdir -p "$HOME"/.config/triiodide/
+touch "$HOME"/.config/triiodide/firstboot-done
 cp -n /etc/justfile "$HOME"/.justfile
 
 ) | 
      
-   zenity --progress --title="uBlue Desktop Firstboot" --percentage=0 --auto-close --no-cancel --width=300
+   zenity --progress --title="triiodide Firstboot" --percentage=0 --auto-close --no-cancel --width=300
 
 if [ "$?" != 0 ] ; then
         zenity --error \

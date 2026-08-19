@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=triiodide FirstBoot Setup
+Comment=Sets up triiodide on first boot
+Exec=/usr/bin/triiodide-firstboot
+Icon=org.gnome.Terminal
+Type=Application
+Categories=Utility;System;
+Name[en_US]=startup
