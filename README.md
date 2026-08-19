@@ -12,9 +12,9 @@ See [ublue](https://ublue.it) for more details
 
 Warning: This is an experimental feature and should not be used in production (yet), however it's pretty close) Depending on the version of rpm-ostree on your system you might need to pass an additional `--experimental` flag
 
-To rebase an existing Silverblue/Kinoite machine to the latest release (37): 
+To rebase an existing Silverblue/Kinoite machine to the latest release (44): 
 
-    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/geekgonecrazy/triiodide:37
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/geekgonecrazy/triiodide:44
     
 We build date tags as well, so if you want to rebase to a particular day's release:
   
@@ -24,7 +24,7 @@ The `latest` tag will automatically point to the latest build. Note that when a 
 
 ## Features
 
-- Start with a base Fedora Silverblue 37 image
+- Start with a base Fedora Silverblue 44 image
 - Removes Firefox from the base image
 - Adds the following packages to the base image:
   - distrobox and gnome-tweaks

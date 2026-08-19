@@ -29,10 +29,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        major_version: [42]
+        major_version: [44]
         arch: [amd64, arm64]
         include:
-          - major_version: 42
+          - major_version: 44
             is_latest: true
             is_stable: true
     steps: 

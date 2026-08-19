@@ -1,5 +1,5 @@
 # Multi-stage build
-ARG FEDORA_MAJOR_VERSION=42
+ARG FEDORA_MAJOR_VERSION=44
 
 ## Build ublue-os-triiodide
 FROM quay.io/fedora/fedora-bootc:${FEDORA_MAJOR_VERSION}
